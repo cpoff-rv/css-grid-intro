@@ -7,12 +7,18 @@
 - Equip ourselves with a variety of learning resources
 
 ## The Fundamentals of CSS Grid Layout
-So what is CSS Grid? An actual, bona fide, honest-to-God **two-dimensional layout** in CSS. Out of the box we get to:
+So what is CSS Grid? An actual, bona fide, honest-to-God **two-dimensional layout** in CSS. Here's what we get right out of the box:
 - **P**recise item placement
 - **I**mplicit grid
 - **V**ertical and horizontal alignment
 - **O**verlapping content
 - **T**rack sizing
+
+Yes, you read that correctly: we can now PIVOT.
+
+<img src="pivot.gif"/>
+
+> This isn't an industry-approved acronym, but it works and you may find it helpful. Also, I wanted to use this gif, okay? Okay.
 
 ## Let's Build a Grid... or Five
 Codepen Collection: [Intro to CSS Grid](https://codepen.io/collection/5cd694b7ffc031be4a186e9fb32b97f7/)
