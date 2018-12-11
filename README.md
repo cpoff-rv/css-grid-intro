@@ -18,12 +18,25 @@ Yes, you read that correctly: we can now PIVOT.
 
 <img src="pivot.gif"/>
 
-> This isn't an industry-approved acronym, but it works and you may find it helpful. Also, I wanted to use this gif, okay? Okay.
+> This isn't an industry-approved acronym, but it works and you may find it helpful. Also, I really wanted to use this gif, okay? Okay.
+
+### 3 Basic Terms
+- define grid column
+- define grid row
+- define grid track
+
+### Precise item placement
+### Implicit grid
+### Vertical and horizontal alignment
+### Overlapping content
+### Track sizing
+
 
 ## Let's Build a Grid... or Five
 Codepen Collection: [Intro to CSS Grid](https://codepen.io/collection/5cd694b7ffc031be4a186e9fb32b97f7/)
 
 ## Gotchas to Consider
+- CSS Grid is not a replacement for Flexbox
 
 ## Learning Resources
 ### Theory & Reference 📚
