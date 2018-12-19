@@ -25,7 +25,11 @@ We'll do some PIVOTing shortly, but first, let's establish some basic vocabulary
 
 When we work with Grid, we have a parent element - the **grid container** - and the direct children of that grid container - the **grid items**. 
 
+<img src="container-items.jpg"/>
+
 Grid items can be placed in **grid columns** and **grid rows**. These columns and rows define **grid tracks**.
+
+<img src="columns-rows.jpg"/>
 
 If this seems abstract right now, don't worry. It will get clearer as we build this stuff ourselves.
 
