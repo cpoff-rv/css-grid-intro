@@ -20,20 +20,14 @@ Yes, you read that correctly: we can now PIVOT.
 
 > This isn't an industry-approved acronym, but it works and you may find it helpful. Also, I really wanted to use this gif, okay? Okay.
 
-### Vocabulary
+### Containers and Items and Tracks, Oh My!
 We'll do some PIVOTing shortly, but first, let's establish some basic vocabulary.
 
-Whenever you work with Grid, you're working with a parent element - the **grid container** - and the direct children of that grid container - the **grid items**.
+When we work with Grid, we have a parent element - the **grid container** - and the direct children of that grid container - the **grid items**. 
 
-<img src="container-items.jpg"/>
+Grid items can be placed in **grid columns** and **grid rows**. These columns and rows define **grid tracks**.
 
-Grid items can be placed on **grid tracks**. Grid tracks are made up of **grid columns** and **grid rows**.
-
-<img src="columns-rows.jpg"/>
-
-- define grid column
-- define grid row
-- define grid track
+If this seems abstract right now, don't worry. It will get clearer as we build this stuff ourselves.
 
 ### Precise item placement
 ### Implicit grid
