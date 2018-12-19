@@ -14,20 +14,20 @@ So what is CSS Grid? An actual, bona fide, honest-to-God **two-dimensional layou
 - **O**verlapping content
 - **T**rack sizing
 
-Yes, you read that correctly: we can now PIVOT.
+Yes, you read that correctly: we can now **PIVOT**.
 
 <img src="pivot.gif"/>
 
 > This isn't an industry-approved acronym, but it works and you may find it helpful. Also, I really wanted to use this gif, okay? Okay.
 
 ### Containers and Items and Tracks, Oh My!
-We'll do some PIVOTing shortly, but first, let's establish some basic vocabulary.
+We'll do some PIVOTing shortly, but first, let's establish a working vocabulary.
 
-When we work with Grid, we have a parent element - the **grid container** - and the direct children of that grid container - the **grid items**. 
+For starters, we have a parent element: the **GRID CONTAINER**. Any direct children of that parent element are **GRID ITEMS**. 
 
 <img src="container-items.jpg"/>
 
-Grid items can be placed in **grid columns** and **grid rows**. These columns and rows define **grid tracks**.
+Grid items can be placed in **GRID COLUMNS** and **GRID ROWS**. Together these columns and rows define **GRID TRACKS**.
 
 <img src="columns-rows.jpg"/>
 
@@ -38,7 +38,6 @@ If this seems abstract right now, don't worry. It will get clearer as we build t
 ### Vertical and horizontal alignment
 ### Overlapping content
 ### Track sizing
-
 
 ## Let's Build a Grid... or Five
 Codepen Collection: [Intro to CSS Grid](https://codepen.io/collection/5cd694b7ffc031be4a186e9fb32b97f7/)
