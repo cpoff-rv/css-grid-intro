@@ -23,9 +23,13 @@ Yes, you read that correctly: we can now PIVOT.
 ### Vocabulary
 We'll do some PIVOTing shortly, but first, let's establish some basic vocabulary.
 
-Whenever you work with Grid, you're working with a parent element - the **grid container** - and the direct children of that grid container - the **grid items**. 
+Whenever you work with Grid, you're working with a parent element - the **grid container** - and the direct children of that grid container - the **grid items**.
+
+<img src="container-items.jpg"/>
 
 Grid items can be placed on **grid tracks**. Grid tracks are made up of **grid columns** and **grid rows**.
+
+<img src="columns-rows.jpg"/>
 
 - define grid column
 - define grid row
