@@ -48,6 +48,14 @@ Turns out, what we're missing is a column declaration. Let's add `grid-template-
 
 That's more like it. Now we have a grid with 2 columns, each 500px wide. We can even shorten our declaration with the `repeat()` function, like so: `grid-template-columns: repeat(2, 500px)`.
 
+We're using pixels here, but any length unit is a viable option: rems, ems, percentages, you name it. 
+
+Grid also brings a new unit of measurement to CSS: the `fr` unit represents a fraction of the available space in a grid container, and it's here to make our grid tracks flexible AF.
+
+> [note that fr always defers to fixed values]
+
+We can also specify rows using `grid-template-rows`. 
+
 _[segway into TRACK SIZING: fixed vs flexible, the `fr` unit, etc]_
 
 _[discuss Flexbox vs CSS Grid, nature of one-dimensional layouts vs two-dimensional, including Codepen example]_
@@ -55,6 +63,8 @@ _[discuss Flexbox vs CSS Grid, nature of one-dimensional layouts vs two-dimensio
 ### Precise item placement
 ### Implicit grid
 ### Vertical and horizontal alignment
+- justify-content, justify-items
+- align-content, align-items
 ### Overlapping content
 ### Track sizing
 
