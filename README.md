@@ -48,23 +48,27 @@ Turns out, what we're missing is a column declaration. Let's add `grid-template-
 
 That's more like it. Now we have a grid with 2 columns, each 500px wide. We can even shorten our declaration with the `repeat()` function, like so: `grid-template-columns: repeat(2, 500px)`.
 
-We're using pixels here, but any length unit is a viable option: rems, ems, percentages, you name it. 
+We're using pixels here, but any length unit is a viable option: rems, ems, percentages, you name it. We can even mix these units: `grid-template-columns: 33% 100px 20vw 15rem 4em` is a perfectly valid rule, believe it or not.
 
 Grid also brings a new unit of measurement to CSS: the `fr` unit represents a fraction of the available space in a grid container, and it's here to make our grid tracks flexible AF.
 
-> [note that fr always defers to fixed values]
+> ⚠️ `fr` will always defer to fixed units. If we write `grid-template-columns: 250px 1fr`, 250px will be taken out of the available space, and the remaining space goes to the `fr`. In other words, if other units are eating the grid, `fr` only gets the leftovers.
 
-We can also specify rows using `grid-template-rows`. 
+Columns are great, but isn't Grid all about two-dimensional control? Where are our rows? 
 
-_[segway into TRACK SIZING: fixed vs flexible, the `fr` unit, etc]_
+We can define rows using - you guessed it - `grid-template-rows`. As with columns, any length unit (or combination of length units) is fair game.
 
-_[discuss Flexbox vs CSS Grid, nature of one-dimensional layouts vs two-dimensional, including Codepen example]_
+Last but not least, we can define gutters with `grid-row-gap` and `grid-column-gap`... or with the shorthand `grid-gap`.
+
+Now let's PIVOT. 
 
 ### Precise item placement
 ### Implicit grid
 ### Vertical and horizontal alignment
+_[discuss Flexbox vs CSS Grid, nature of one-dimensional layouts vs two-dimensional, including Codepen example]_
 - justify-content, justify-items
 - align-content, align-items
+- grid-auto-flow
 ### Overlapping content
 ### Track sizing
 
