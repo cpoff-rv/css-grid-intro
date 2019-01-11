@@ -34,7 +34,7 @@ Grid items can be placed in **GRID COLUMNS** and **GRID ROWS**. Together these c
 If this seems abstract right now, don't worry. It will get clearer as we build this stuff ourselves. Time to fire up Codepen.
 
 ### Exercise #1: Declaration of Gridependance 
-🔗 Codepen: [Getting Started](https://codepen.io/solomonkane/pen/938ef9695f92af67c8284049be1410a8)
+🔗 Codepen: [Getting started](https://codepen.io/solomonkane/pen/938ef9695f92af67c8284049be1410a8)
 
 Declaring a grid is simple. Just set `display: grid` on our grid container - in this case, the div with the clever class name `.grid` - and _voila!_ We're done. Ship it.
 
@@ -50,7 +50,7 @@ That's more like it. Now we have a grid with 2 columns, each 500px wide. We can 
 
 We're using pixels here, but any length unit is a viable option: rems, ems, percentages, you name it. We can even mix these units: `grid-template-columns: 33% 100px 20vw 15rem 4em` is a perfectly valid rule, believe it or not.
 
-Grid also brings a new unit of measurement to CSS: the `fr` unit represents a fraction of the available space in a grid container, and it's here to make our grid tracks flexible AF.
+Grid also brings a new unit of measurement to CSS: the `fr` unit represents a fraction of the available space in a grid container, and it's here to make our grid tracks flexible AF. Let's use it: `grid-template-columns: repeat(2, 1fr)`.
 
 > ⚠️ `fr` will always defer to fixed units. If we write `grid-template-columns: 250px 1fr`, 250px will be taken out of the available space, and the remaining space goes to the `fr`. In other words, if other units are eating the grid, `fr` only gets the leftovers.
 
@@ -62,7 +62,64 @@ Last but not least, we can define gutters with `grid-row-gap` and `grid-column-g
 
 Now let's PIVOT. 
 
-### Precise item placement
+## Precise item placement
+Grid allows us to get super specific about where items live in our grid container. We can do this with line numbers, named lines, and grid areas.
+
+### Exercise #2: Numbers, Names, and Areas
+🔗 Codepen: [Precise item placement](https://codepen.io/solomonkane/pen/7a803d257a3a65e479bf824a70a1095c)
+
+Using `grid-column-start` and `grid-column-end`, we can tell grid items which column to occupy. If we want to specify the row, we can use `grid-row-start` and `grid-row-end`.
+
+> These properties can be shortened to `grid-column` and `grid-row`, respectively. Just provide the starting and ending values, seperated by a slash: `grid-column: 1 / 2`.
+
+Let's switch things up for `grid__item--rogue`.
+
+#### Using line numbers
+
+```css
+.grid__item--rogue {
+  grid-column: 2 / 3;
+  grid-row: 3 / 4;
+}
+```
+P.S. Firefox Grid Inspector is your friend
+
+#### Using named lines
+
+```css
+.grid {
+  grid-template-columns: [col-1-start] 1fr [col-1-end col-2-start] 1fr [col-2-end];
+  grid-template-rows: [row-1-start] 1fr [row-1-end row-2-start] 1fr [row-2-end row-3-start] 1fr [row-3-end];
+}
+
+.grid__item--rogue {
+  grid-column: col-1 / col-2;
+  grid-row: row-2;
+}
+```
+
+#### Using grid areas
+Say hello to `grid-template-areas`. This property allows us define grid areas with ascii art: each word represents a column and each line represents a row.
+
+```css
+.grid {
+  grid-template-columns: 2fr 2fr 1fr 2fr;
+  grid-template-rows: 1fr 1fr 1fr;
+  grid-template-areas:
+          "right left"
+          "right left"
+          "bottom bottom";
+}
+
+.grid__item--rogue {
+  grid-area: bottom;
+}
+```
+
+You can probably already see how powerful grid areas would be with something like [site layout](https://codepen.io/solomonkane/pen/3c7e2d965ff468fbe294b585142aa379?editors=1100). It's a knockout.
+
+**Bonus**: [CSS Grid Gallery](https://codepen.io/solomonkane/pen/VEyWQO)
+
 ### Implicit grid
 ### Vertical and horizontal alignment
 _[discuss Flexbox vs CSS Grid, nature of one-dimensional layouts vs two-dimensional, including Codepen example]_
