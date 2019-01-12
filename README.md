@@ -82,7 +82,8 @@ Let's switch things up for `grid__item--rogue`.
   grid-row: 3 / 4;
 }
 ```
-P.S. Firefox Grid Inspector is your friend
+
+> _[mention `span 1` and `-1`]_
 
 #### Using named lines
 
@@ -116,11 +117,34 @@ Say hello to `grid-template-areas`. This property allows us define grid areas wi
 }
 ```
 
-You can probably already see how powerful grid areas would be with something like [site layout](https://codepen.io/solomonkane/pen/3c7e2d965ff468fbe294b585142aa379?editors=1100). It's a knockout.
+You can probably already see how powerful grid areas would be with something like [site layout](https://codepen.io/solomonkane/pen/3c7e2d965ff468fbe294b585142aa379?editors=1100).
 
 **Bonus**: [CSS Grid Gallery](https://codepen.io/solomonkane/pen/VEyWQO)
 
-### Implicit grid
+## Implicit grid
+Setting explicit positions for grid items is cool, but not always what you want. Generally, you'll have maybe a couple grid items you want to explicitly place, and you want everything else to just... fall into place, with as little thinking on your part as possible. Wouldn't that be a dream?
+
+_[extremely Kevin Flynn voice]_ Welcome to the (implicit) grid.
+
+We've already seen this feature in action. In our first grid example, we didn't explictly position _any_ of the grid items, and they still "magically" arranged themselves into columns and rows. This is possible thanks to CSS Grid's auto-placement rules. When we create a grid, each grid item is automatically placed in a cell on the first row. When there's no more room on the explicit grid, a new implicit row is created.
+
+Whenever you're building a grid, therefore, it's important to think in terms of both explicit and implicit grids.
+
+### Exercise #3: Explicit vs Implicit
+🔗 Codepen: [Explicit Grid vs Implicit Grid](https://codepen.io/solomonkane/pen/ad1ce44713514030614a96eebef6c7bc)
+
+Right now, we have six items laid out on a 3x2 grid. Everything fits snugly within the _explicit_ grid. But what happens if we add a seventh item?
+
+Since there's no room in the explicit grid, a brand new row is created for us. This row is part of the implicit grid, _because we didn't define it._ Grid does that for us.
+
+> If you're unsure about where the explicit grid ends and the implicit grid begins, Firefox Grid Inspector differentiates between two. The solid black line indicates around your items means the explicit grid. The very small dotted line means the implicit grid.  
+
+As you can see, the new implicit row is sized differently. By default, all rows on the implicit grid are auto-sized. They're just big enough to house the content inside of them without overflow. We can control the size of implicit rows with the `grid-auto-rows` property. Check it out: `grid-auto-rows: 100px`. Now all of our rows - explicit and implicit - are the same size.
+
+The default flow in Grid is to arrange by row. We can change this by setting `grid-auto-flow: column`. Remember in Flexbox how we can control `flex-direction`? It's just like that. Now any items that can't fit on the explicit grid will be placed in implicit columns.
+
+- _[mention other cool values like `column dense`]_
+
 ### Vertical and horizontal alignment
 _[discuss Flexbox vs CSS Grid, nature of one-dimensional layouts vs two-dimensional, including Codepen example]_
 - justify-content, justify-items
@@ -128,6 +152,7 @@ _[discuss Flexbox vs CSS Grid, nature of one-dimensional layouts vs two-dimensio
 - grid-auto-flow
 ### Overlapping content
 ### Track sizing
+- the almighty minmax()
 
 ## Let's Build a Grid... or Five
 Codepen Collection: [Intro to CSS Grid](https://codepen.io/collection/5cd694b7ffc031be4a186e9fb32b97f7/)
