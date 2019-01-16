@@ -176,8 +176,28 @@ So if you find yourself trying to make Flexbox less flexible, maybe you should u
 - _[include note about justify-content, justify-items, align-content, align-items?]_
 
 ### Overlapping content
-- less to say about this, as I haven't use it much, but it's still pretty cool
-- may replace the need for `position: absolute` in certain cases
+Laying items out side by side is great, but it's also possible for more than one grid item to occupy the same grid cell. I haven't used this feature much yet, but it's handy to know.
+
+### Example #5: Overlap
+🔗 Codepen: [Overlapping Items](https://codepen.io/solomonkane/pen/1521429fcd1d96d4d1fac4b433e100ab)
+
+We have a grid divided into 3 columns, and we're letting auto-placement make the implicit rows for us, as needed. 
+
+Let's make `.grid__item--1` stretch full width on the first row: 
+```
+grid-column: 1 / -1;
+grid-row: 1;
+```
+
+Notice how the grid automatically shifts the other items around to accomodate our explicit placement of `.grid__item--1`. Item 2 just shifted over and down. But we want Item 2 to stay put. So let's explicitly place it: `grid-column: 3 / -1`.
+
+Item 2 still isn't occupying the same cell. That's because we haven't specified the row. Without explictly telling it which row to occupy, Grid will make assumptions about the placement and just bump it down. Let's specify row: `grid-row: 1`.
+
+Long story short: the more explicit you get with item placement, the higher priority it will be given.
+
+If needed, we can use `z-index` to place Item 1 on top of Item 2.
+
+I haven't encountered a ton of use cases for overlapping, but one potential plus is that it may replace the need for `position: absolute` in certain cases.
 
 ### Track sizing
 - the almighty minmax()
