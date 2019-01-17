@@ -200,9 +200,68 @@ If needed, we can use `z-index` to place Item 1 on top of Item 2.
 I haven't encountered a ton of use cases for overlapping, but one potential plus is that it may replace the need for `position: absolute` in certain cases.
 
 ### Track sizing
-- the almighty minmax()
+We looked at this earlier, but to recap: Grid offers us the ability to create fixed _and_ flexible track sizes. Whether you're making rows or columns, you can use any length unit to make your grid. Pixels if you want a fixed grid, percentages or the new `fr` unit if you want a flexible grid.
+
+- Fixed 5 column grid: `grid-template-columns: 250px 250px 250px 250px`
+
+- Flexible 5 column grid: `grid-template-columns: 1fr 1fr 1fr 1fr 1fr`
+
+We also saw that we can mix units: `grid-template-columns: 33% 100px 20vw 15rem 4em` is valid.
+
+We looked at the `repeat()` function, but there's another function worth mentioning: the almighty `minmax()`. 
+
+#### Example #5: Minmax()
+🔗 Codepen: [The Almighty Minmax()](https://codepen.io/solomonkane/pen/20b7f47c2927c4eb4e948b9125bca56b?editors=1100)
+
+`minmax()` takes two parameters: a `min` and a `max` (didn't see that coming, did you?). Using these parameters, `minmax()` - per MDN - "defines a size range greater than or equal to min and less than or equal to max." So it's basically just `min-width` and `max-width` coming together to form a super CSS robot. _[insert Voltron gif]_
+
+A few examples:
+- `grid-template-columns: 500px minmax(300px, 500px)`: The first column will be an inflexible 500px at all time. The second column will be flexible, with a minimum width of 300px and a maximum width of 500px.
+
+- `grid-template-columns: 500px minmax(300px, 1fr)`: The first column will be an inflexible 500px at all time. The second column will have a flexible width, growing as much as the remaining space allows, but it will never shrink below 300px.
+
+- `grid-template-columns: 500px minmax(min-content, 500px)`: The first column will be an inflexible 500px at all times. The second column will have a minimum width of whatever the _smallest_ size of the content can be (in this case, the text will wrap); but the second column will never grow larger than 500px.
+
+- `grid-template-columns: 500px minmax(max-content, 500px)`: The first column will be an inflexible 500px at all times. The second column will have a minimum width of whatever the _largest_ size of the content can be (in this case, the text will _not_ wrap); but the second column will never grow larger than 500px.
+
+But wait. There's more.
+
+#### auto-fill vs auto-fit
+Let's talk about 2 new keywords: `auto-fill` and `auto-fit`. 
+
+- `auto-fill` - create a NEW implicit column whenever there's room for one. Even if there's no content in these new columns, they will still take up space.
+
+- `auto-fit` - make the CURRENT columns (i.e. columns with actual content) expand to take up available space. Create new columns but collapse them to 0px width.
+
+Both create new columns, but `auto-fit` collapses columns without content to 0px width, then stretches the columns WITH content to take up any extra space.
+
+This is easier to understand if you can visualize what's happening _[include Codepen example, maybe just alter the same one?]_
+
+> If you ever want a refresher, I recommend [this short video](https://www.youtube.com/watch?v=uBFEryQY1fU). It's short and straightforward.
+
+A bit confusing, I know. But for our purposes, we're just going to use `auto-fit`, and you'll see it's practical benefit in a second.
+
+#### CSSorcery
+What if I told you that by combining `repeat()` with `minmax()` and `auto-fit`, we can get a fully responsive grid without any media queries at all?
+
+Let's go back to our original 5 items. On our grid, let's write `grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr))`.
+
+Our grid is now made up of 5 columns, each with a minimum width of `20rem` (200px) and a maximum width of `1fr`, which means it can grow beyond 200px but won't shrink below 200px. The `auto-fit` keyword ensures that no matter how our grid resizes, the columns will fill it. There won't be any gaps. Now watch what happens when we resize the window.
+
+_Magic._
+
+We went from 5 columns... to 4 columns... to 3 columns... to 2 columns... to 1 column. Without writing a single media query.
+
+Does this get rid of the need for media queries entirely? No. 
+
+_[Wes Bos quote about new tech not replacing old tech, just expanding our toolbox]_
+
+But it will drastically reduce the number of media queries you need, and it makes resizing from desktop to mobile and vice versa not just painless, but practically euphoric.
+
+If that doesn't get you excited about Grid, I don't know what will.
 
 ## Other Considerations
+- Subgrid
 - Browser support
 - Accessibility
 
