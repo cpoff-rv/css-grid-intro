@@ -76,7 +76,7 @@ Using `grid-column-start` and `grid-column-end`, we can tell grid items which co
 
 Let's switch things up for `grid__item--rogue`.
 
-#### Using line numbers
+### Using line numbers
 
 ```css
 .grid__item--rogue {
@@ -87,7 +87,7 @@ Let's switch things up for `grid__item--rogue`.
 
 > _[mention `span 1` and `-1`]_
 
-#### Using named lines
+### Using named lines
 
 ```css
 .grid {
@@ -101,7 +101,7 @@ Let's switch things up for `grid__item--rogue`.
 }
 ```
 
-#### Using grid areas
+### Using grid areas
 Say hello to `grid-template-areas`. This property allows us define grid areas with ascii art: each word represents a column and each line represents a row.
 
 ```css
@@ -147,7 +147,7 @@ The default flow in Grid is to arrange by row. We can change this by setting `gr
 
 - _[mention other cool values like `column dense`]_
 
-### Vertical and horizontal alignment
+## Vertical and horizontal alignment
 One of the most common misconceptions about Grid is that it replaces Flexbox. _It does not._ You can and should use both together, as they're meant to solve different problems. Flexbox is intended for one-dimensional layouts - you want horizontal **or** vertical control. Grid is intended for two-dimensional layouts - you want horizontal **and** vertical control.
 
 To better understand this difference, let's look at an example. (Rachel Andrew and MDN both use variations of this example, so you know it's a good one.)
@@ -175,7 +175,7 @@ So if you find yourself trying to make Flexbox less flexible, maybe you should u
 
 - _[include note about justify-content, justify-items, align-content, align-items?]_
 
-### Overlapping content
+## Overlapping content
 Laying items out side by side is great, but it's also possible for more than one grid item to occupy the same grid cell. I haven't used this feature much yet, but it's handy to know.
 
 ### Example #5: Overlap
@@ -199,7 +199,7 @@ If needed, we can use `z-index` to place Item 1 on top of Item 2.
 
 I haven't encountered a ton of use cases for overlapping, but one potential plus is that it may replace the need for `position: absolute` in certain cases.
 
-### Track sizing
+## Track sizing
 We looked at this earlier, but to recap: Grid offers us the ability to create fixed _and_ flexible track sizes. Whether you're making rows or columns, you can use any length unit to make your grid. Pixels if you want a fixed grid, percentages or the new `fr` unit if you want a flexible grid.
 
 - Fixed 5 column grid: `grid-template-columns: 250px 250px 250px 250px`
@@ -210,7 +210,7 @@ We also saw that we can mix units: `grid-template-columns: 33% 100px 20vw 15rem 
 
 We looked at the `repeat()` function, but there's another function worth mentioning: the almighty `minmax()`. 
 
-#### Example #5: Minmax()
+### Example #5: Minmax()
 🔗 Codepen: [The Almighty Minmax()](https://codepen.io/solomonkane/pen/20b7f47c2927c4eb4e948b9125bca56b?editors=1100)
 
 `minmax()` takes two parameters: a `min` and a `max` (didn't see that coming, did you?). Using these parameters, `minmax()` - per MDN - "defines a size range greater than or equal to min and less than or equal to max." So it's basically just `min-width` and `max-width` coming together to form a super CSS robot. _[insert Voltron gif]_
@@ -226,7 +226,7 @@ A few examples:
 
 But wait. There's more.
 
-#### auto-fill vs auto-fit
+### auto-fill vs auto-fit
 Let's talk about 2 new keywords: `auto-fill` and `auto-fit`. 
 
 - `auto-fill` - create a NEW implicit column whenever there's room for one. Even if there's no content in these new columns, they will still take up space.
@@ -241,7 +241,7 @@ This is easier to understand if you can visualize what's happening _[include Cod
 
 A bit confusing, I know. But for our purposes, we're just going to use `auto-fit`, and you'll see it's practical benefit in a second.
 
-#### CSSorcery
+### CSSorcery
 What if I told you that by combining `repeat()` with `minmax()` and `auto-fit`, we can get a fully responsive grid without any media queries at all?
 
 Let's go back to our original 5 items. On our grid, let's write `grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr))`.
