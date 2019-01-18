@@ -1,5 +1,9 @@
 # Intro to CSS Grid
 
+[ask if anyone has used it]
+[we're using it on ADT.com]
+[masonry, how would you do it before CSS Grid]
+
 ## Learning Objectives
 - Study the basic concepts of CSS Grid Layout
 - Apply those concepts by building our own grids in Codepen
@@ -28,6 +32,8 @@ For starters, we have a parent element: the **GRID CONTAINER**. Any direct child
 Grid items can be placed in **GRID COLUMNS** and **GRID ROWS**. Together these columns and rows define **GRID TRACKS**.
 
 Everything about Grid is easier to understand when you can actually _look_ at it. Time to fire up Codepen.
+
+[revise examples, still use flexbox?]
 
 ### Example #1: Declaration of Gridependance 
 🔗 Codepen: [Basic Grid](https://codepen.io/solomonkane/pen/938ef9695f92af67c8284049be1410a8)
@@ -64,13 +70,13 @@ Now let's PIVOT.
 Grid allows us to get super specific about where items live in our grid container. We can do this with line numbers, named lines, and grid areas.
 
 ### Example #2: Numbers, Names, and Areas
-🔗 Codepen: [Precise item placement](https://codepen.io/solomonkane/pen/7a803d257a3a65e479bf824a70a1095c)
+🔗 Codepen: [Precise Item Placement](https://codepen.io/solomonkane/pen/7a803d257a3a65e479bf824a70a1095c)
 
 Using `grid-column-start` and `grid-column-end`, we can tell grid items which column to occupy. If we want to specify the row, we can use `grid-row-start` and `grid-row-end`.
 
 > These properties can be shortened to `grid-column` and `grid-row`, respectively. Just provide the starting and ending values, seperated by a slash: `grid-column: 1 / 2`.
 
-Let's switch things up for `grid__item--rogue`.
+Let's switch things up for `grid__item--rogue`. [move it where? be more specific]
 
 ### Using line numbers
 
@@ -96,17 +102,18 @@ Let's switch things up for `grid__item--rogue`.
   grid-row: row-2;
 }
 ```
+[pure syntactic sugar]
 
 ### Using grid areas
 Say hello to `grid-template-areas`. This property allows us define grid areas with ascii art: each word represents a column and each line represents a row.
 
 ```css
 .grid {
-  grid-template-columns: 2fr 2fr 1fr 2fr;
+  grid-template-columns: 1fr 1fr;
   grid-template-rows: 1fr 1fr 1fr;
   grid-template-areas:
-          "right left"
-          "right left"
+          "left right"
+          "left right"
           "bottom bottom";
 }
 
@@ -115,12 +122,14 @@ Say hello to `grid-template-areas`. This property allows us define grid areas wi
 }
 ```
 
+[better example and explanation?]
+
 You can probably already see how powerful grid areas would be with something like [site layout](https://codepen.io/solomonkane/pen/3c7e2d965ff468fbe294b585142aa379?editors=1100).
 
-**Bonus**: [CSS Grid Gallery](https://codepen.io/solomonkane/pen/VEyWQO)
+**Bonus**: [CSS Grid Gallery](https://codepen.io/solomonkane/pen/VEyWQO) [where should this go?]
 
 ## Implicit grid
-Setting explicit positions for grid items is cool, but not always what you want. Generally, you'll have maybe a couple grid items you want to explicitly place, and you want everything else to just... fall into place, with as little thinking on your part as possible. Wouldn't that be a dream?
+Setting explicit positions for grid items is cool, but not always what you want. Most of the time, you'll have a few grid items you want to explicitly place, and you want everything else to just... fall into place, with as little thinking on your part as possible. Wouldn't that be a dream?
 
 _[extremely Kevin Flynn voice]_ Welcome to the (implicit) grid.
 
