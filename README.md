@@ -23,22 +23,18 @@ Yes, you read that correctly: we can now **PIVOT**.
 ### Containers and Items and Tracks, Oh My!
 We'll do some PIVOTing shortly, but first, let's establish a working vocabulary.
 
-For starters, we have a parent element: the **GRID CONTAINER**. Any direct children of that parent element are **GRID ITEMS*. 
-
-<img src="container-items.jpg"/>
+For starters, we have a parent element: the **GRID CONTAINER**. Any direct children of that parent element are **GRID ITEMS**.
 
 Grid items can be placed in **GRID COLUMNS** and **GRID ROWS**. Together these columns and rows define **GRID TRACKS**.
 
-<img src="columns-rows.jpg"/>
-
-If this seems abstract right now, don't worry. It will get clearer as we build this stuff ourselves. Time to fire up Codepen.
+Everything about Grid is easier to understand when you can actually _look_ at it. Time to fire up Codepen.
 
 ### Example #1: Declaration of Gridependance 
-🔗 Codepen: [Getting started](https://codepen.io/solomonkane/pen/938ef9695f92af67c8284049be1410a8)
+🔗 Codepen: [Basic Grid](https://codepen.io/solomonkane/pen/938ef9695f92af67c8284049be1410a8)
 
-Declaring a grid is simple. Just set `display: grid` on our grid container - in this case, the div with the clever class name `.grid` - and _voila!_ We're done. Ship it.
+Declaring a grid is simple. Just set `display: grid` on our grid container - in this case, the div with the imaginative class name `.grid` - and _voila!_ We're done. Ship it.
 
-Okay, maybe don't ship it _quite_ yet. Nothing has really changed about the appearance of our grid; the divs are still stacked on top of each other like before. Let's take a closer look... in Firefox.
+Okay, maybe don't ship it _quite_ yet. Nothing has really changed about the appearance of our grid; the items are still stacked like before. Let's take a closer look... in Firefox.
 
 > Say hello to the **Firefox Grid Inspector**. It's powerful, easy to use, and nicer than anything currently available in Chrome DevTools. It can help us visualize our layouts and prevent debugging-induced baldness. Basically, it's awesome. Read more about it [here](https://developer.mozilla.org/en-US/docs/Tools/Page_Inspector/How_to/Examine_grid_layouts).
 
@@ -46,13 +42,13 @@ After popping open Firefox DevTools, we can see `display: grid` did, in fact, ch
 
 Turns out, what we're missing is a column declaration. Let's add `grid-template-columns: 500px 500px` to our grid container.
 
-That's more like it. Now we have a grid with 2 columns, each 500px wide. We can even shorten our declaration with the `repeat()` function, like so: `grid-template-columns: repeat(2, 500px)`.
+That's more like it. Now we have a grid with 2 columns, each 500px wide. We can even shorten our declaration with the `repeat()` function: `grid-template-columns: repeat(2, 500px)`.
 
 We're using pixels here, but any length unit is a viable option: rems, ems, percentages, you name it. We can even mix these units: `grid-template-columns: 33% 100px 20vw 15rem 4em` is a perfectly valid rule, believe it or not.
 
 Grid also brings a new unit of measurement to CSS: the `fr` unit represents a fraction of the available space in a grid container, and it's here to make our grid tracks flexible AF. Let's use it: `grid-template-columns: repeat(2, 1fr)`.
 
-> ⚠️ `fr` will always defer to fixed units. If we write `grid-template-columns: 250px 1fr`, 250px will be taken out of the available space, and the remaining space goes to the `fr`. In other words, if other units are eating the grid, `fr` only gets the leftovers.
+> ⚠️ `fr` will always defer to other units. If we write `grid-template-columns: 250px 1fr`, 250px will be taken out of the available space, and the remaining space goes to the `fr`. In other words, if other units are eating the grid, `fr` only gets the leftovers.
 
 Columns are great, but isn't Grid all about two-dimensional control? Where are our rows? 
 
@@ -62,7 +58,7 @@ Last but not least, we can define gutters with `grid-row-gap` and `grid-column-g
 
 Now let's PIVOT.
 
-> _[discuss grid cells? some of these topics will overlap with each other, but that's okay, the goal is to be an introducton and get people excited about Grid]_
+> _[some of these topics will overlap with each other, but that's okay, the goal is to be an introducton and get people excited about Grid]_
 
 ## Precise item placement
 Grid allows us to get super specific about where items live in our grid container. We can do this with line numbers, named lines, and grid areas.
