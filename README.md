@@ -7,7 +7,7 @@
 
 ## Learning Objectives
 - Study the basic concepts of CSS Grid Layout
-- Apply those concepts by building our own grids in Codepen
+- Apply those concepts to our own grids in Codepen
 - Identify common pitfalls and misconceptions
 - Equip ourselves with a variety of learning resources
 
@@ -166,7 +166,7 @@ To better understand this difference, let's look at an example.
 > Rachel Andrew and MDN both use variations of this example, so you know it's a good one.
 
 ### Example #4: "You are traveling through another dimension..."
-🔗 Codepen: [One-Dimensional vs Two-Dimensional](https://codepen.io/solomonkane/pen/96ea9b0fd828481a8fa04c0f13fd16f8)
+🔗 **Codepen**: [One-Dimensional vs Two-Dimensional](https://codepen.io/solomonkane/pen/96ea9b0fd828481a8fa04c0f13fd16f8)
 
 On the left we have a "grid" with Flexbox. We've got `flex-wrap: wrap;` on the parent, and `flex: 1 1 calc(50% - 4px);` on the children. Each child can grow and shrink, with a `flex-basis` equal to half the size of the container (minus the 2px border on each side). Our "grid" looks pretty decent until we get to the fifth item. Instead of lining up under other the items, the fifth item has grown to fill the entire container. 
 
@@ -185,39 +185,53 @@ But Grid works from the _layout_ in. You create a grid, then place items in it (
 As a rule of thumb, if you find yourself trying to make Flexbox less flexible, use Grid. And if you find yourself trying to make Grid _too_ flexible, use Flexbox.
 
 ## Overlapping Content
-Laying items out side by side is great, but it's also possible for more than one grid item to occupy the same grid cell. I haven't used this feature much yet, but it's handy to know.
+Laying items out side by side is great, but it's also possible for more than one grid item to occupy the same column (or row).
 
 ### Example #5: Overlap
-🔗 Codepen: [Overlapping Items](https://codepen.io/solomonkane/pen/1521429fcd1d96d4d1fac4b433e100ab)
+🔗 **Codepen**: [Overlapping Items](https://codepen.io/solomonkane/pen/1521429fcd1d96d4d1fac4b433e100ab)
 
-We have a grid divided into 3 columns, and we're letting auto-placement make the implicit rows for us, as needed. 
+Our grid is divided into 3 columns, with implicit rows being created as needed. 
 
-Let's make `.grid__item--1` stretch full width on the first row: 
+Let's make `.grid__item--1` stretch across the entire first row:
+
+```css
+.grid__item--1 {
+  grid-column: 1 / -1;
+  grid-row: 1;
+}
 ```
-grid-column: 1 / -1;
-grid-row: 1;
+
+Notice how our grid automatically shifts the other items around to accomodate our precise placement of `.grid__item--1`. Item 2 is moved over and down. We want Item 2 to stay put, so let's manually place it: 
+
+```css
+.grid__item--2 {
+  grid-column: 3 / -1;
+}
 ```
 
-Notice how the grid automatically shifts the other items around to accomodate our explicit placement of `.grid__item--1`. Item 2 just shifted over and down. But we want Item 2 to stay put. So let's explicitly place it: `grid-column: 3 / -1`.
+This put Item 2 in the correct column, but it's still underneath Item 1. That's because we haven't specified the row. Without explict instruction, Grid will make assumptions about the placement and just bump it down.
 
-Item 2 still isn't occupying the same cell. That's because we haven't specified the row. Without explictly telling it which row to occupy, Grid will make assumptions about the placement and just bump it down. Let's specify row: `grid-row: 1`.
+```css
+.grid__item--2 {
+  grid-column: 3 / -1;
+  grid-row: 1;
+}
+```
 
-Long story short: the more explicit you get with item placement, the higher priority it will be given.
+If we wanted to put Item 1 on top of Item 2, we can just use `z-index`.
 
-If needed, we can use `z-index` to place Item 1 on top of Item 2.
-
-I haven't encountered a ton of use cases for overlapping, but one potential plus is that it may replace the need for `position: absolute` in certain cases.
+One very practical upside to this feature is that it may replace the need for `position: absolute;` in certain cases.
 
 ## Track Sizing
-We looked at this earlier, but to recap: Grid offers us the ability to create fixed _and_ flexible track sizes. Whether you're making rows or columns, you can use any length unit to make your grid. Pixels if you want a fixed grid, percentages or the new `fr` unit if you want a flexible grid.
+We've seen some of this already, but to recap: Grid offers us the ability to create fixed _and_ flexible track sizes using various length units. We can use pixels if we want a fixed grid, or the new `fr` unit if we want a flexible grid.
 
-- Fixed 5 column grid: `grid-template-columns: 250px 250px 250px 250px`
+- Fixed 3-column grid: `grid-template-columns: 250px 250px 250px;`
 
-- Flexible 5 column grid: `grid-template-columns: 1fr 1fr 1fr 1fr 1fr`
+- Flexible 3-column grid: `grid-template-columns: 1fr 1fr 1fr;`
 
-We also saw that we can mix units: `grid-template-columns: 33% 100px 20vw 15rem 4em` is valid.
+We also learned that we can mix units: `grid-template-columns: 33% 100px 20vw 15rem 4em` is crazy-looking, but valid.
 
-We looked at the `repeat()` function, but there's another function worth mentioning: the almighty `minmax()`. 
+We used the `repeat()` function, but there's another function worth mentioning: the almighty `minmax()`. 
 
 ### Example #5: Minmax()
 🔗 Codepen: [The Almighty Minmax()](https://codepen.io/solomonkane/pen/20b7f47c2927c4eb4e948b9125bca56b?editors=1100)
