@@ -3,6 +3,7 @@
 [ask if anyone has used it]
 [we're using it on ADT.com]
 [masonry, how would you do it before CSS Grid]
+[some of these topics will overlap with each other, but that's okay, the goal is to be an introducton and get people excited about Grid]_
 
 ## Learning Objectives
 - Study the basic concepts of CSS Grid Layout
@@ -22,7 +23,7 @@ Yes, you read that correctly: we can now **PIVOT**.
 
 <img src="pivot.gif"/>
 
-> This isn't an industry-approved acronym, but it works and you may find it helpful. Also, I really wanted to use this gif, okay? Okay.
+> This isn't an industry-approved acronym, but it works and you may find it helpful. Also, I really wanted to use this gif.
 
 ### Containers and Items and Tracks, Oh My!
 We'll do some PIVOTing shortly, but first, let's establish a working vocabulary.
@@ -31,30 +32,32 @@ For starters, we have a parent element: the **GRID CONTAINER**. Any direct child
 
 Grid items can be placed in **GRID COLUMNS** and **GRID ROWS**. Together these columns and rows define **GRID TRACKS**.
 
-Everything about Grid is easier to understand when you can actually _look_ at it. Time to fire up Codepen.
+Everything about Grid is easier to understand when you can actually _look_ at it, so let's fire up Codepen... in Firefox.
 
-[revise examples, still use flexbox?]
+> Say hello to the **Firefox Grid Inspector**. It's powerful, easy to use, and nicer than anything currently available in Chrome DevTools. It can help us visualize our layouts and prevent debugging-induced baldness. Basically, it's awesome. Read more about it [here](https://developer.mozilla.org/en-US/docs/Tools/Page_Inspector/How_to/Examine_grid_layouts).
 
 ### Example #1: Declaration of Gridependance 
 🔗 Codepen: [Basic Grid](https://codepen.io/solomonkane/pen/938ef9695f92af67c8284049be1410a8)
 
-Declaring a grid is simple. Just set `display: grid` on our grid container - in this case, the div with the imaginative class name `.grid` - and _voila!_ We're done. Ship it.
+Declaring a grid is simple. All we have to do is set `display: grid;` on our grid container and _voila!_ We're done. Ship it.
 
-Okay, maybe don't ship it _quite_ yet. Nothing has really changed about the appearance of our grid; the items are still stacked like before. Let's take a closer look... in Firefox.
+Okay, maybe don't ship it _quite_ yet. Nothing has really changed about the appearance of our grid; the items are still stacked like before. Let's take a closer look...
 
-> Say hello to the **Firefox Grid Inspector**. It's powerful, easy to use, and nicer than anything currently available in Chrome DevTools. It can help us visualize our layouts and prevent debugging-induced baldness. Basically, it's awesome. Read more about it [here](https://developer.mozilla.org/en-US/docs/Tools/Page_Inspector/How_to/Examine_grid_layouts).
+After popping it open Firefox DevTools, we can see `display: grid` did, in fact, change something. There's a "grid" marker next to our `<section>`. There's also a ~~tiny waffle~~ grid icon next to our declaration in the Rules pane. Groovy. Our grid does exist after all.
 
-After popping open Firefox DevTools, we can see `display: grid` did, in fact, change _something_. There's a "grid" marker next to our `<section>`. There's also a ~~tiny waffle~~ grid icon next to our declaration in the Rules pane. Groovy. Our grid does exist after all.
+Turns out, what we're missing is a column declaration. Let's add `grid-template-columns: 500px 500px;` to our grid container.
 
-Turns out, what we're missing is a column declaration. Let's add `grid-template-columns: 500px 500px` to our grid container.
+That's more like it. Now we have a grid with 2 columns, each 500px wide. We can even shorten our declaration with the `repeat()` function: `grid-template-columns: repeat(2, 500px);`.
 
-That's more like it. Now we have a grid with 2 columns, each 500px wide. We can even shorten our declaration with the `repeat()` function: `grid-template-columns: repeat(2, 500px)`.
+We're using pixels here, but any length unit is a viable option: rems, ems, percentages, you name it. We can even mix these units: `grid-template-columns: 33% 100px 20vw 15rem 4em;` is a perfectly valid rule, believe it or not.
 
-We're using pixels here, but any length unit is a viable option: rems, ems, percentages, you name it. We can even mix these units: `grid-template-columns: 33% 100px 20vw 15rem 4em` is a perfectly valid rule, believe it or not.
+Grid also brings a new unit of measurement to CSS: the `fr` unit represents a fraction of the available space in a grid container, and it's here to make our grid tracks flexible AF. 
 
-Grid also brings a new unit of measurement to CSS: the `fr` unit represents a fraction of the available space in a grid container, and it's here to make our grid tracks flexible AF. Let's use it: `grid-template-columns: repeat(2, 1fr)`.
+Why should we use `fr` over other flexible units, like percentages? Long story short, [it saves us a bunch of math](https://css-tricks.com/introduction-fr-css-unit/).
 
-> ⚠️ `fr` will always defer to other units. If we write `grid-template-columns: 250px 1fr`, 250px will be taken out of the available space, and the remaining space goes to the `fr`. In other words, if other units are eating the grid, `fr` only gets the leftovers.
+Let's use `fr` on our grid: `grid-template-columns: repeat(2, 1fr);`.
+
+> ⚠️ `fr` will always defer to other units. If we write `grid-template-columns: 250px 1fr;`, 250px will be taken out of the available space, and the remaining space goes to the `fr`. In other words, if other units are eating the grid, `fr` only gets the leftovers.
 
 Columns are great, but isn't Grid all about two-dimensional control? Where are our rows? 
 
@@ -62,21 +65,19 @@ We can define rows using - you guessed it - `grid-template-rows`. As with column
 
 Last but not least, we can define gutters with `grid-row-gap` and `grid-column-gap`... or with the shorthand `grid-gap`.
 
-Now let's PIVOT.
+Let's PIVOT.
 
-> _[some of these topics will overlap with each other, but that's okay, the goal is to be an introducton and get people excited about Grid]_
+## Precise Item Placement
+Grid allows us to get super specific about where items live in our grid container. We can do this with line numbers, named lines, and grid areas. Suddenly projects like this [masonry effect](https://codepen.io/solomonkane/pen/VEyWQO) can be done with relative ease.
 
-## Precise item placement
-Grid allows us to get super specific about where items live in our grid container. We can do this with line numbers, named lines, and grid areas.
-
-### Example #2: Numbers, Names, and Areas
+### Example #2: Numbers, Names, Areas
 🔗 Codepen: [Precise Item Placement](https://codepen.io/solomonkane/pen/7a803d257a3a65e479bf824a70a1095c)
 
 Using `grid-column-start` and `grid-column-end`, we can tell grid items which column to occupy. If we want to specify the row, we can use `grid-row-start` and `grid-row-end`.
 
-> These properties can be shortened to `grid-column` and `grid-row`, respectively. Just provide the starting and ending values, seperated by a slash: `grid-column: 1 / 2`.
+> ⚠️ These properties can be shortened to `grid-column` and `grid-row`, respectively. Just provide the starting and ending values, seperated by a slash: `grid-column: 1 / 2`.
 
-Let's switch things up for `grid__item--rogue`. [move it where? be more specific]
+Let's use this feature to move `grid__item--rogue` around our grid.
 
 ### Using line numbers
 
@@ -87,7 +88,13 @@ Let's switch things up for `grid__item--rogue`. [move it where? be more specific
 }
 ```
 
-> _[mention `span 1` and `-1`]_
+This puts our grid item in the _column_ between (vertical) lines 2 and 3, and in the _row_ between (horizontal) lines 3 and 4. 
+
+> If you want to visualize the lines, you can toggle `Display line numbers` in Firefox Grid Inspector.
+
+Alternatively, we could write `grid-column: 2 / span 1;` to make our item span a single column. 
+
+We could also write `grid-column: 2 / -1;`, which just means "start at line 2 and continue until the end of the track".
 
 ### Using named lines
 
@@ -102,7 +109,10 @@ Let's switch things up for `grid__item--rogue`. [move it where? be more specific
   grid-row: row-2;
 }
 ```
-[pure syntactic sugar]
+
+Named lines are just syntactic sugar. At the end of the day, you're still working with lines, but names are more meaningful than numbers.
+
+> You can name the lines anything you want, provided you still use `-start` and `-end`. 
 
 ### Using grid areas
 Say hello to `grid-template-areas`. This property allows us define grid areas with ascii art: each word represents a column and each line represents a row.
@@ -122,13 +132,9 @@ Say hello to `grid-template-areas`. This property allows us define grid areas wi
 }
 ```
 
-[better example and explanation?]
+This takes some getting used to, but once you wrap your head around it, it's fantastic - particularly when you apply it to something like [site layout](https://codepen.io/solomonkane/pen/3c7e2d965ff468fbe294b585142aa379?editors=1100).
 
-You can probably already see how powerful grid areas would be with something like [site layout](https://codepen.io/solomonkane/pen/3c7e2d965ff468fbe294b585142aa379?editors=1100).
-
-**Bonus**: [CSS Grid Gallery](https://codepen.io/solomonkane/pen/VEyWQO) [where should this go?]
-
-## Implicit grid
+## Implicit Grid
 Setting explicit positions for grid items is cool, but not always what you want. Most of the time, you'll have a few grid items you want to explicitly place, and you want everything else to just... fall into place, with as little thinking on your part as possible. Wouldn't that be a dream?
 
 _[extremely Kevin Flynn voice]_ Welcome to the (implicit) grid.
@@ -144,7 +150,7 @@ Right now, we have six items laid out on a 3x2 grid. Everything fits snugly with
 
 Since there's no room in the explicit grid, a brand new row is created for us. This row is part of the implicit grid, _because we didn't define it._ Grid does that for us.
 
-> If you're unsure about where the explicit grid ends and the implicit grid begins, Firefox Grid Inspector differentiates between two. The solid black line indicates around your items means the explicit grid. The very small dotted line means the implicit grid.  
+> ⚠️ If you're unsure about where the explicit grid ends and the implicit grid begins, Firefox Grid Inspector differentiates between two. The solid black line indicates around your items means the explicit grid. The very small dotted line means the implicit grid.  
 
 As you can see, the new implicit row is sized differently. By default, all rows on the implicit grid are auto-sized. They're just big enough to house the content inside of them without overflow. We can control the size of implicit rows with the `grid-auto-rows` property. Check it out: `grid-auto-rows: 100px`. Now all of our rows - explicit and implicit - are the same size.
 
@@ -152,7 +158,7 @@ The default flow in Grid is to arrange by row. We can change this by setting `gr
 
 - _[mention other cool values like `column dense`]_
 
-## Vertical and horizontal alignment
+## Vertical and Horizontal Alignment
 One of the most common misconceptions about Grid is that it replaces Flexbox. _It does not._ You can and should use both together, as they're meant to solve different problems. Flexbox is intended for one-dimensional layouts - you want horizontal **or** vertical control. Grid is intended for two-dimensional layouts - you want horizontal **and** vertical control.
 
 To better understand this difference, let's look at an example. (Rachel Andrew and MDN both use variations of this example, so you know it's a good one.)
@@ -180,7 +186,7 @@ So if you find yourself trying to make Flexbox less flexible, maybe you should u
 
 - _[include note about justify-content, justify-items, align-content, align-items?]_
 
-## Overlapping content
+## Overlapping Content
 Laying items out side by side is great, but it's also possible for more than one grid item to occupy the same grid cell. I haven't used this feature much yet, but it's handy to know.
 
 ### Example #5: Overlap
@@ -204,7 +210,7 @@ If needed, we can use `z-index` to place Item 1 on top of Item 2.
 
 I haven't encountered a ton of use cases for overlapping, but one potential plus is that it may replace the need for `position: absolute` in certain cases.
 
-## Track sizing
+## Track Sizing
 We looked at this earlier, but to recap: Grid offers us the ability to create fixed _and_ flexible track sizes. Whether you're making rows or columns, you can use any length unit to make your grid. Pixels if you want a fixed grid, percentages or the new `fr` unit if you want a flexible grid.
 
 - Fixed 5 column grid: `grid-template-columns: 250px 250px 250px 250px`
@@ -231,7 +237,7 @@ A few examples:
 
 But wait. There's more.
 
-### auto-fill vs auto-fit
+### auto-Fill vs auto-Fit
 Let's talk about 2 new keywords: `auto-fill` and `auto-fit`. 
 
 - `auto-fill` - create a NEW implicit column whenever there's room for one. Even if there's no content in these new columns, they will still take up space.
@@ -255,7 +261,7 @@ Our grid is now made up of 5 columns, each with a minimum width of `20rem` (200p
 
 _Magic._
 
-We went from 5 columns... to 4 columns... to 3 columns... to 2 columns... to 1 column. Without writing a single media query.
+We went from 5 columns... to 4 columns... to 3 columns... to 2 columns... to 1 column. And we didn't write a single media query.
 
 Does this get rid of the need for media queries entirely? No. 
 
