@@ -37,7 +37,7 @@ Everything about Grid is easier to understand when you can actually _look_ at it
 > Say hello to the **Firefox Grid Inspector**. It's powerful, easy to use, and nicer than anything currently available in Chrome DevTools. It can help us visualize our layouts and prevent debugging-induced baldness. Basically, it's awesome. Read more about it [here](https://developer.mozilla.org/en-US/docs/Tools/Page_Inspector/How_to/Examine_grid_layouts).
 
 ### Example #1: Declaration of Gridependance 
-🔗 Codepen: [Basic Grid](https://codepen.io/solomonkane/pen/938ef9695f92af67c8284049be1410a8)
+🔗 **Codepen**: [Basic Grid](https://codepen.io/solomonkane/pen/938ef9695f92af67c8284049be1410a8)
 
 Declaring a grid is simple. All we have to do is set `display: grid;` on our grid container and _voila!_ We're done. Ship it.
 
@@ -71,7 +71,7 @@ Let's PIVOT.
 Grid allows us to get super specific about where items live in our grid container. We can do this with line numbers, named lines, and grid areas. Suddenly projects like this [masonry effect](https://codepen.io/solomonkane/pen/VEyWQO) can be done with relative ease.
 
 ### Example #2: Numbers, Names, Areas
-🔗 Codepen: [Precise Item Placement](https://codepen.io/solomonkane/pen/7a803d257a3a65e479bf824a70a1095c)
+🔗 **Codepen**: [Precise Item Placement](https://codepen.io/solomonkane/pen/7a803d257a3a65e479bf824a70a1095c)
 
 Using `grid-column-start` and `grid-column-end`, we can tell grid items which column to occupy. If we want to specify the row, we can use `grid-row-start` and `grid-row-end`.
 
@@ -135,28 +135,28 @@ Say hello to `grid-template-areas`. This property allows us define grid areas wi
 This takes some getting used to, but once you wrap your head around it, it's fantastic - particularly when you apply it to something like [site layout](https://codepen.io/solomonkane/pen/3c7e2d965ff468fbe294b585142aa379?editors=1100).
 
 ## Implicit Grid
-Setting explicit positions for grid items is cool, but not always what you want. Most of the time, you'll have a few grid items you want to explicitly place, and you want everything else to just... fall into place, with as little thinking on your part as possible. Wouldn't that be a dream?
+Manual positioning for grid items is cool, but that's not always what you want. Most of the time you'll have a few grid items you want to position, while everything else should just... fall into place. No extra math, please.
 
 _[extremely Kevin Flynn voice]_ Welcome to the (implicit) grid.
 
-We've already seen this feature in action. In our first grid example, we didn't explictly position _any_ of the grid items, and they still "magically" arranged themselves into columns and rows. This is possible thanks to CSS Grid's auto-placement rules. When we create a grid, each grid item is automatically placed in a cell on the first row. When there's no more room on the explicit grid, a new implicit row is created.
+We've already seen this feature in action. In our first grid example, we didn't explictly position _any_ of the grid items, and they still "magically" arranged themselves into columns and rows. 
 
-Whenever you're building a grid, therefore, it's important to think in terms of both explicit and implicit grids.
+This is possible thanks to CSS Grid's auto-placement rules. When we create a grid, each grid item is automatically placed in a cell on the first row. When there's no more room on the explicit row, a new _implicit_ row is automatically created for us. 
 
 ### Example #3: Explicit vs Implicit
 🔗 Codepen: [Explicit Grid vs Implicit Grid](https://codepen.io/solomonkane/pen/ad1ce44713514030614a96eebef6c7bc)
 
-Right now, we have six items laid out on a 3x2 grid. Everything fits snugly within the _explicit_ grid. But what happens if we add a seventh item?
+We have six items laid out on a 3x2 grid. This grid is _explicitly_ defined, and all our grid items fit snugly in it. But what if we add a seventh item?
 
-Since there's no room in the explicit grid, a brand new row is created for us. This row is part of the implicit grid, _because we didn't define it._ Grid does that for us.
+Because there's no more room in the explicit grid, a brand new row is created for us. This row is part of the implicit grid, _because we didn't define it._ Grid defined it for us.
 
-> ⚠️ If you're unsure about where the explicit grid ends and the implicit grid begins, Firefox Grid Inspector differentiates between two. The solid black line indicates around your items means the explicit grid. The very small dotted line means the implicit grid.  
+> ⚠️ If you're unsure where the explicit grid ends and the implicit grid begins, Firefox Grid Inspector can distinguish between the two. The solid black line around your items is the explicit grid. The tiny dotted line that picks up right after it is the implicit grid.  
 
-As you can see, the new implicit row is sized differently. By default, all rows on the implicit grid are auto-sized. They're just big enough to house the content inside of them without overflow. We can control the size of implicit rows with the `grid-auto-rows` property. Check it out: `grid-auto-rows: 100px`. Now all of our rows - explicit and implicit - are the same size.
+As you've probably noticed, the new implicit row is sized differently. By default, all rows on the implicit grid are auto-sized: they're only big enough to house the content inside of them without overflowing. We can change that with `grid-auto-rows` property. By adding `grid-auto-rows: 100px;` to our grid container, we make _all_ rows - explicit and implicit - the same size.
 
-The default flow in Grid is to arrange by row. We can change this by setting `grid-auto-flow: column`. Remember in Flexbox how we can control `flex-direction`? It's just like that. Now any items that can't fit on the explicit grid will be placed in implicit columns.
+By default Grid arranges by row - just like Flexbox. And just like Flexbox, we can change that: only instead of using `flex-direction`, we use the `grid-auto-flow` property. With `grid-auto-flow: column;`, any items that can't fit on the explicit grid will be placed in new implicit _columns_.
 
-- _[mention other cool values like `column dense`]_
+> If you're trying to size implicit columns, `grid-auto-columns` is the ~droid~ property you're looking for.
 
 ## Vertical and Horizontal Alignment
 One of the most common misconceptions about Grid is that it replaces Flexbox. _It does not._ You can and should use both together, as they're meant to solve different problems. Flexbox is intended for one-dimensional layouts - you want horizontal **or** vertical control. Grid is intended for two-dimensional layouts - you want horizontal **and** vertical control.
