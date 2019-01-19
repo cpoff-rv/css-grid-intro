@@ -137,9 +137,9 @@ This takes some getting used to, but once you wrap your head around it, it's fan
 ## Implicit Grid
 Manual positioning for grid items is cool, but that's not always what you want. Most of the time you'll have a few grid items you want to position, while everything else should just... fall into place. No extra math, please.
 
-_[extremely Kevin Flynn voice]_ Welcome to the (implicit) grid.
+Welcome to the implicit grid.
 
-We've already seen this feature in action. In our first grid example, we didn't explictly position _any_ of the grid items, and they still "magically" arranged themselves into columns and rows. 
+As a matter of fact, we've already seen this in action. In our first grid example, we didn't explictly position _any_ of the grid items, and they still "magically" arranged themselves into columns and rows. 
 
 This is possible thanks to CSS Grid's auto-placement rules. When we create a grid, each grid item is automatically placed in a cell on the first row. When there's no more room on the explicit row, a new _implicit_ row is automatically created for us. 
 
@@ -159,32 +159,30 @@ By default Grid arranges by row - just like Flexbox. And just like Flexbox, we c
 > If you're trying to size implicit columns, `grid-auto-columns` is the ~droid~ property you're looking for.
 
 ## Vertical and Horizontal Alignment
-One of the most common misconceptions about Grid is that it replaces Flexbox. _It does not._ You can and should use both together, as they're meant to solve different problems. Flexbox is intended for one-dimensional layouts - you want horizontal **or** vertical control. Grid is intended for two-dimensional layouts - you want horizontal **and** vertical control.
+One mistaken assumption about Grid is that it replaces Flexbox. It doesn't. You can and should use both, because they're meant to solve different problems. Flexbox is intended for one-dimensional layouts - you want horizontal **or** vertical control. Grid is intended for two-dimensional layouts - you want horizontal **and** vertical control.
 
-To better understand this difference, let's look at an example. (Rachel Andrew and MDN both use variations of this example, so you know it's a good one.)
+To better understand this difference, let's look at an example.
+
+> Rachel Andrew and MDN both use variations of this example, so you know it's a good one.
 
 ### Example #4: "You are traveling through another dimension..."
 🔗 Codepen: [One-Dimensional vs Two-Dimensional](https://codepen.io/solomonkane/pen/96ea9b0fd828481a8fa04c0f13fd16f8)
 
-On the left we have a "grid" with Flexbox. (It's not a real grid, as we'll soon see, hence the scare quotes.) We've got `flex-wrap: wrap` on the parent, and `flex: 1 1 150px` on the children. That means the children can grow and shrink, with a `flex-basis` of 150px. Everything looks pretty good until we get to the fifth item. Instead of lining up under the items above it, it stretches to fill the entire container. 
+On the left we have a "grid" with Flexbox. We've got `flex-wrap: wrap;` on the parent, and `flex: 1 1 calc(50% - 4px);` on the children. Each child can grow and shrink, with a `flex-basis` equal to half the size of the container (minus the 2px border on each side). Our "grid" looks pretty decent until we get to the fifth item. Instead of lining up under other the items, the fifth item has grown to fill the entire container. 
 
-This isn't a bug. It's how Flexbox works. When our flex item wraps, it creates a new row, and that new row becomes a new flex container. The same applies if we're working with columns in Flexbox. 
+This isn't a bug. It's how Flexbox works. When our flex item wraps, it creates a new row, and that new row becomes a new flex container. 
 
 In some cases, this may be exactly what you want. In other cases, not so much. That's where Grid steps in.
 
-On the right, we have a grid with CSS Grid. With `grid-template-columns: repeat(2, 1fr)`, we already have a truer grid than we had with Flexbox. Our fifth item is properly lined up nicely under the other items.
+On the right of our example, we have a grid with CSS Grid. Using just one property - `grid-template-columns: repeat(2, 1fr);` - we already have a truer grid than we had with Flexbox. The fifth item is properly lined up under the other items.
 
-In one sense, then, a good question to ask yourself when deciding whether to use Flexbox or Grid is: do I need vertical and horizontal alignment in my layout? If you need both, Grid is your best bet. If you just need one, Flexbox is probably what you want.
+A good question to ask when deciding whether to use Flexbox or Grid is: "Do I need vertical and horizontal alignment in my layout?" If you need both, Grid is your best bet. If you only need one or the other, Flexbox will do just fine.
 
-Another question to ask is: content out or layout in?
+Another question to ask is: "Content _out_ or layout _in_?" If you want items laid out without necessarily lining up, and you want _content_ to dictate the size of each item... Flexbox is perfect for that.
 
-If you want to lay out a bunch of items out, without necessarily lining up, and let _content_ dictate the size of each item... Flexbox is perfect for that.
+But Grid works from the _layout_ in. You create a grid, then place items in it (or let auto-placement do that for you). Either way, the items are laid out according to the grid, not according to their content. 
 
-But Grid works from the _layout_ in. You create a grid, then place items in it - or let auto-placement do for you. Either way, the items are laid out according to the grid. It has a stricter, less flexible relationship to the content.
-
-So if you find yourself trying to make Flexbox less flexible, maybe you should use Grid instead. If you find yourself trying to make Grid more flexible than it is, maybe Flexbox is what you need.
-
-- _[include note about justify-content, justify-items, align-content, align-items?]_
+As a rule of thumb, if you find yourself trying to make Flexbox less flexible, use Grid. And if you find yourself trying to make Grid _too_ flexible, use Flexbox.
 
 ## Overlapping Content
 Laying items out side by side is great, but it's also possible for more than one grid item to occupy the same grid cell. I haven't used this feature much yet, but it's handy to know.
