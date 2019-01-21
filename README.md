@@ -1,9 +1,15 @@
 # Intro to CSS Grid
 
-[ask if anyone has used it]
-[we're using it on ADT.com]
-[masonry, how would you do it before CSS Grid]
-[some of these topics will overlap with each other, but that's okay, the goal is to be an introducton and get people excited about Grid]_
+## Contents
+- [Learning Objectives](#learning-objectives)
+- [The Fundamentals of CSS Grid](#the-fundamentals-of-css-grid-layout)
+- [Precise Item Placement](#the-p-precise-item-placement)
+- [Implicit Grid](#the-i-implicit-grid)
+- [Vertical and Horizontal Alignment](#the-v-vertical-and-horizontal-alignment)
+- [Overlapping Content](#the-o-overlapping-content)
+- [Track Sizing](#the-t-track-sizing)
+- [Extra, Extra](#extra-extra)
+- [Learning Resources](#learning-resources)
 
 ## Learning Objectives
 - Study the basic concepts of CSS Grid Layout
@@ -67,7 +73,7 @@ Last but not least, we can define gutters with `grid-row-gap` and `grid-column-g
 
 Let's PIVOT.
 
-## Precise Item Placement
+## The P: Precise Item Placement
 Grid allows us to get super specific about where items live in our grid container. We can do this with line numbers, named lines, and grid areas. Suddenly projects like this [masonry effect](https://codepen.io/solomonkane/pen/VEyWQO) can be done with relative ease.
 
 ### Example #2: "The numbers, Mason! What do they mean?"
@@ -134,7 +140,7 @@ Say hello to `grid-template-areas`. This property allows us define grid areas wi
 
 This takes some getting used to, but once you wrap your head around it, it's fantastic - particularly when you apply it to something like [site layout](https://codepen.io/solomonkane/pen/3c7e2d965ff468fbe294b585142aa379?editors=1100).
 
-## Implicit Grid
+## The I: Implicit Grid
 Manual positioning for grid items is cool, but that's not always what you want. Most of the time you'll have a few grid items you want to position, while everything else should just... fall into place. No extra math, please.
 
 Welcome to the implicit grid.
@@ -158,7 +164,7 @@ By default Grid arranges by row - just like Flexbox. And just like Flexbox, we c
 
 > If you're trying to size implicit columns, `grid-auto-columns` is the ~droid~ property you're looking for.
 
-## Vertical and Horizontal Alignment
+## The V: Vertical and Horizontal Alignment
 One mistaken assumption about Grid is that it replaces Flexbox. It doesn't. You can and should use both, because they're meant to solve different problems. Flexbox is intended for one-dimensional layouts - you want horizontal **or** vertical control. Grid is intended for two-dimensional layouts - you want horizontal **and** vertical control.
 
 To better understand this difference, let's look at an example.
@@ -184,8 +190,7 @@ But Grid works from the _layout_ in. You create a grid, then place items in it (
 
 As a rule of thumb, if you find yourself trying to make Flexbox less flexible, use Grid. And if you find yourself trying to make Grid _too_ flexible, use Flexbox.
 
-
-## Overlapping Content
+## The O: Overlapping Content
 Laying items out side by side is great, but it's also possible for more than one grid item to occupy the same column (or row).
 
 ### Example #5: "The name is Lap. Over Lap."
@@ -224,7 +229,7 @@ If we wanted to put Item 1 on top of Item 2, we can use `z-index`.
 A practical upside to this feature is that it may replace the need for `position: absolute;` in certain cases.
 
 
-## Track Sizing
+## The T: Track Sizing
 We've seen some of this already, but to recap: Grid offers us the ability to create fixed _and_ flexible track sizes using various length units. We can use pixels if we want a fixed grid, or the new `fr` unit if we want a flexible grid.
 
 - Fixed 3-column grid: `grid-template-columns: 250px 250px 250px;`
@@ -276,7 +281,7 @@ We can see the difference in [this example](https://codepen.io/solomonkane/pen/7
 
 Don't get too bogged down with it, though. For our purposes we're only going to use `auto-fit`, and the benefit of it will be a bit clearer.
 
-### CSSorcery
+### Responsive CSSorcery
 What if I told you that by combining `repeat()` with `minmax()` and `auto-fit`, we can get a fully responsive grid without writing a single media query?
 
 We caught a glimpse of this with our last example, but for clarity's sake, let's go back to [the minmax() Codepen](https://codepen.io/solomonkane/pen/20b7f47c2927c4eb4e948b9125bca56b) and give our grid container the following declaration:
