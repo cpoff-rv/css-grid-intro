@@ -158,6 +158,7 @@ By default Grid arranges by row - just like Flexbox. And just like Flexbox, we c
 
 > If you're trying to size implicit columns, `grid-auto-columns` is the ~droid~ property you're looking for.
 
+
 ## Vertical and Horizontal Alignment
 One mistaken assumption about Grid is that it replaces Flexbox. It doesn't. You can and should use both, because they're meant to solve different problems. Flexbox is intended for one-dimensional layouts - you want horizontal **or** vertical control. Grid is intended for two-dimensional layouts - you want horizontal **and** vertical control.
 
@@ -183,6 +184,7 @@ Another question to ask is: "Content _out_ or layout _in_?" If you want items la
 But Grid works from the _layout_ in. You create a grid, then place items in it (or let auto-placement do that for you). Either way, the items are laid out according to the grid, not according to their content. 
 
 As a rule of thumb, if you find yourself trying to make Flexbox less flexible, use Grid. And if you find yourself trying to make Grid _too_ flexible, use Flexbox.
+
 
 ## Overlapping Content
 Laying items out side by side is great, but it's also possible for more than one grid item to occupy the same column (or row).
@@ -222,6 +224,7 @@ If we wanted to put Item 1 on top of Item 2, we can use `z-index`.
 
 A practical upside to this feature is that it may replace the need for `position: absolute;` in certain cases.
 
+
 ## Track Sizing
 We've seen some of this already, but to recap: Grid offers us the ability to create fixed _and_ flexible track sizes using various length units. We can use pixels if we want a fixed grid, or the new `fr` unit if we want a flexible grid.
 
@@ -260,7 +263,7 @@ Ask and ye shall recieve. Let's talk about two new keywords: `auto-fill` and `au
 
 So both of these keywords create new columns, but `auto-fit` collapses columns _without_ content to 0px width, then expands the columns _with_ content to take up all that extra space. The real difference, then, is how these keywords treat empty columns. 
 
-We can see the difference in [this example](https://codepen.io/solomonkane/pen/7c4d2058024fca571761278ca2159efd). Right now, the difference is only visible if we open Grid Inspector. Throw `fr` into the mix, and suddenly the difference is much more obvious.
+We can see the difference in [this example](https://codepen.io/solomonkane/pen/7c4d2058024fca571761278ca2159efd). Right now, that difference is only visible if we open Grid Inspector. Throw `fr` into the mix, and suddenly it's much more obvious.
 
 ```css
 .grid--fill {
@@ -289,29 +292,36 @@ Our grid is now made up of 5 columns, each with a minimum width of `200px` and a
 
 _Magic._
 
-We went from 5 columns... to 4 columns... to 3 columns... to 2 columns... to 1 column. No media queries needed.
+We went from 5 columns... to 4 columns... to 3 columns... to 2 columns... to 1 column. No media queries required.
 
-Does this get rid of the need for media queries entirely? No. 
+Does this mean we can scrap media queries entirely? _Negative, Ghost Rider._ It just means we have a new tool in our toolbox. We'll still use media queries, but we won't have to use them as often or in the same places. Responsive design just got even easier.
 
-_[Wes Bos quote about new tech not replacing old tech, just expanding our toolbox]_
 
-But it will drastically reduce the number of media queries you need, and it makes resizing from desktop to mobile and vice versa not just painless, but pretty pleasant.
+## Extra, Extra
+You probably have questions, so here are some answers...
 
-If that doesn't get you excited about Grid, I don't know what will.
+### "But what about browser support?"
+The elephant in the room, but it really shouldn't be. We're currently at [**85.6%** unprefixed usage](https://caniuse.com/#feat=css-grid), which is significant. That number goes up if you're willing to polyfill or provide a fallback layout for spoil-sports like IE11. Progressive enhancement, folks. 
 
-## Other Considerations
-- Browser support
-- Subgrid
-- Accessibility
+If you're still not convinced, read what Rachel Andrew [has to say about it](https://rachelandrew.co.uk/archives/2017/07/04/is-it-really-safe-to-start-using-css-grid-layout/). The article is from July 2017, so the support stats are dated. The principles, however, are rock solid.
+
+### "And accessiblity? What about that?" 
+Check out [this helpful overview](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Grid_Layout/CSS_Grid_Layout_and_Accessibility) from MDN, with further reading included.
+
+### "Didn't I hear something about subgrid?"
+Probably. [CSS Grid Level 2 is coming](https://www.smashingmagazine.com/2018/07/css-grid-2/). Yet another reason to start learning, y'know, Level 1.
+
 
 ## Learning Resources
 ### Theory & Reference 📚
-- [Get Ready for CSS Grid](https://abookapart.com/products/get-ready-for-css-grid-layout) by Rachel Andrew
+- Rachel Andrew's [Get Ready for CSS Grid](https://abookapart.com/products/get-ready-for-css-grid-layout)
 - [Grid by Example](https://gridbyexample.com/)
 - [CSS Grid Layout | MDN](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Grid_Layout)
+
 ### Practice 💪
 - [CSS Grid Garden](http://cssgridgarden.com/)
 - Jonas Schmedtmann's [Advanced CSS and Sass](https://redventures.udemy.com/advanced-css-and-sass/learn/v4/overview)
 - Wes Bos' [CSS Grid Course](https://cssgrid.io/)
+
 ### Tools 🛠
 - [Firefox Grid Inspector](https://developer.mozilla.org/en-US/docs/Tools/Page_Inspector/How_to/Examine_grid_layouts)
