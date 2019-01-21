@@ -17,6 +17,8 @@
 - Identify common pitfalls and misconceptions
 - Equip ourselves with a variety of learning resources
 
+Full Codepen collection [here](https://codepen.io/collection/XEmBgV/2/).
+
 ## The Fundamentals of CSS Grid Layout
 So what is CSS Grid? An actual, bona fide, honest-to-God **two-dimensional layout** in CSS. Here's what we get right out of the box:
 - **P**recise item placement
