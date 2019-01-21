@@ -70,7 +70,7 @@ Let's PIVOT.
 ## Precise Item Placement
 Grid allows us to get super specific about where items live in our grid container. We can do this with line numbers, named lines, and grid areas. Suddenly projects like this [masonry effect](https://codepen.io/solomonkane/pen/VEyWQO) can be done with relative ease.
 
-### Example #2: Numbers, Names, Areas
+### Example #2: "The numbers, Mason! What do they mean?"
 🔗 **Codepen**: [Precise Item Placement](https://codepen.io/solomonkane/pen/7a803d257a3a65e479bf824a70a1095c)
 
 Using `grid-column-start` and `grid-column-end`, we can tell grid items which column to occupy. If we want to specify the row, we can use `grid-row-start` and `grid-row-end`.
@@ -143,7 +143,7 @@ As a matter of fact, we've already seen this in action. In our first grid exampl
 
 This is possible thanks to CSS Grid's auto-placement rules. When we create a grid, each grid item is automatically placed in a cell on the first row. When there's no more room on the explicit row, a new _implicit_ row is automatically created for us. 
 
-### Example #3: Explicit vs Implicit
+### Example #3: Auto-Placements Assemble
 🔗 Codepen: [Explicit Grid vs Implicit Grid](https://codepen.io/solomonkane/pen/ad1ce44713514030614a96eebef6c7bc)
 
 We have six items laid out on a 3x2 grid. This grid is _explicitly_ defined, and all our grid items fit snugly in it. But what if we add a seventh item?
@@ -157,7 +157,6 @@ As you've probably noticed, the new implicit row is sized differently. By defaul
 By default Grid arranges by row - just like Flexbox. And just like Flexbox, we can change that: only instead of using `flex-direction`, we use the `grid-auto-flow` property. With `grid-auto-flow: column;`, any items that can't fit on the explicit grid will be placed in new implicit _columns_.
 
 > If you're trying to size implicit columns, `grid-auto-columns` is the ~droid~ property you're looking for.
-
 
 ## Vertical and Horizontal Alignment
 One mistaken assumption about Grid is that it replaces Flexbox. It doesn't. You can and should use both, because they're meant to solve different problems. Flexbox is intended for one-dimensional layouts - you want horizontal **or** vertical control. Grid is intended for two-dimensional layouts - you want horizontal **and** vertical control.
@@ -189,7 +188,7 @@ As a rule of thumb, if you find yourself trying to make Flexbox less flexible, u
 ## Overlapping Content
 Laying items out side by side is great, but it's also possible for more than one grid item to occupy the same column (or row).
 
-### Example #5: Overlap
+### Example #5: "The name is Lap. Over Lap."
 🔗 **Codepen**: [Overlapping Items](https://codepen.io/solomonkane/pen/1521429fcd1d96d4d1fac4b433e100ab)
 
 Our grid is divided into 3 columns, with implicit rows being created as needed. 
@@ -296,16 +295,15 @@ We went from 5 columns... to 4 columns... to 3 columns... to 2 columns... to 1 c
 
 Does this mean we can scrap media queries entirely? _Negative, Ghost Rider._ It just means we have a new tool in our toolbox. We'll still use media queries, but we won't have to use them as often or in the same places. Responsive design just got even easier.
 
-
 ## Extra, Extra
 You probably have questions, so here are some answers...
 
 ### "But what about browser support?"
 The elephant in the room, but it really shouldn't be. We're currently at [**85.6%** unprefixed usage](https://caniuse.com/#feat=css-grid), which is significant. That number goes up if you're willing to polyfill or provide a fallback layout for spoil-sports like IE11. Progressive enhancement, folks. 
 
-If you're still not convinced, read what Rachel Andrew [has to say about it](https://rachelandrew.co.uk/archives/2017/07/04/is-it-really-safe-to-start-using-css-grid-layout/). The article is from July 2017, so the support stats are dated. The principles, however, are rock solid.
+If you're still not convinced, consider Rachel Andrew's take [here](https://rachelandrew.co.uk/archives/2017/07/04/is-it-really-safe-to-start-using-css-grid-layout/). The article is from July 2017, so the support stats are dated. The principles, however, are rock solid.
 
-### "And accessiblity? What about that?" 
+### "And accessibility? What about that?" 
 Check out [this helpful overview](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Grid_Layout/CSS_Grid_Layout_and_Accessibility) from MDN, with further reading included.
 
 ### "Didn't I hear something about subgrid?"
