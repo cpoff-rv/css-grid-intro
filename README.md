@@ -152,7 +152,7 @@ As a matter of fact, we've already seen this in action. In our first grid exampl
 This is possible thanks to CSS Grid's auto-placement rules. When we create a grid, each grid item is automatically placed in a cell on the first row. When there's no more room on the explicit row, a new _implicit_ row is automatically created for us. 
 
 ### Example #3: Auto-Placements Assemble
-🔗 Codepen: [Explicit Grid vs Implicit Grid](https://codepen.io/solomonkane/pen/ad1ce44713514030614a96eebef6c7bc)
+🔗 **Codepen**: [Explicit Grid vs Implicit Grid](https://codepen.io/solomonkane/pen/ad1ce44713514030614a96eebef6c7bc)
 
 We have six items laid out on a 3x2 grid. This grid is _explicitly_ defined, and all our grid items fit snugly in it. But what if we add a seventh item?
 
@@ -243,7 +243,7 @@ We also learned that we can mix units: `grid-template-columns: 33% 100px 20vw 15
 We used the `repeat()` function, but there's another function worth mentioning: the almighty `minmax()`. 
 
 ### Example #5: Minimum Maximum Overdrive
-🔗 Codepen: [The Almighty Minmax()](https://codepen.io/solomonkane/pen/20b7f47c2927c4eb4e948b9125bca56b?editors=1100)
+🔗 **Codepen**: [The Almighty Minmax()](https://codepen.io/solomonkane/pen/20b7f47c2927c4eb4e948b9125bca56b?editors=1100)
 
 `minmax()` takes two parameters: a `min` and a `max` (didn't see that coming, did you?). Using these parameters, `minmax()` ( per MDN) "defines a size range greater than or equal to min and less than or equal to max." So it's basically just `min-width` and `max-width` coming together to form a super CSS robot. _[insert Voltron gif]_
 
