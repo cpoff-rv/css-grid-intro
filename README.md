@@ -109,7 +109,7 @@ We could also write `grid-column: 2 / -1;`, which just means "start at line 2 an
 ```css
 .grid {
   grid-template-columns: [col-1-start] 1fr [col-1-end col-2-start] 1fr [col-2-end];
-  grid-template-rows: [row-1-start] 1fr [row-1-end row-2-start] 1fr [row-2-end row-3-start] 1fr [row-3-end];
+  grid-template-rows: [row-1-start] 100px [row-1-end row-2-start] 100px [row-2-end row-3-start] 100px [row-3-end];
 }
 
 .grid__item--rogue {
