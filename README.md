@@ -128,7 +128,7 @@ Say hello to `grid-template-areas`. This property allows us define grid areas wi
 ```css
 .grid {
   grid-template-columns: 1fr 1fr;
-  grid-template-rows: 1fr 1fr 1fr;
+  grid-template-rows: 100px 100px 100px;
   grid-template-areas:
           "left right"
           "left right"
