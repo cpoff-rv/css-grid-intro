@@ -169,6 +169,8 @@ By default Grid arranges by row - just like Flexbox. And just like Flexbox, we c
 ## The V: Vertical and Horizontal Alignment
 One mistaken assumption about Grid is that it replaces Flexbox. It doesn't. You can and should use both, because they're meant to solve different problems. Flexbox is intended for one-dimensional layouts - you want horizontal **or** vertical control. Grid is intended for two-dimensional layouts - you want horizontal **and** vertical control.
 
+<img src="why-not-both.gif"/>
+
 To better understand this difference, let's look at an example.
 
 > Rachel Andrew and MDN both use variations of this example, so you know it's a good one.
@@ -247,6 +249,8 @@ We used the `repeat()` function, but there's another function worth mentioning: 
 
 `minmax()` takes two parameters: a `min` and a `max` (didn't see that coming, did you?). Using these parameters, `minmax()` ( per MDN) "defines a size range greater than or equal to min and less than or equal to max." So it's basically just `min-width` and `max-width` coming together to form a super CSS robot.
 
+<img src="voltron.gif"/>
+
 A few examples:
 - `grid-template-columns: 700px minmax(300px, 500px);`: The first column will be fixed at 700px. The second column will be flexible, with a minimum width of 300px and a maximum width of 500px.
 
@@ -285,6 +289,8 @@ Don't get too bogged down with it, though. For our purposes we're only going to 
 
 ### Responsive CSSorcery
 What if I told you that by combining `repeat()` with `minmax()` and `auto-fit`, we can get a fully responsive grid without writing a single media query?
+
+<img src="sorcery.gif"/>
 
 We caught a glimpse of this with our last example, but for clarity's sake, let's go back to [the minmax() Codepen](https://codepen.io/solomonkane/pen/20b7f47c2927c4eb4e948b9125bca56b) and give our grid container the following declaration:
 
