@@ -245,16 +245,16 @@ We used the `repeat()` function, but there's another function worth mentioning: 
 ### Example #5: Minimum Maximum Overdrive
 🔗 **Codepen**: [The Almighty Minmax()](https://codepen.io/solomonkane/pen/20b7f47c2927c4eb4e948b9125bca56b?editors=1100)
 
-`minmax()` takes two parameters: a `min` and a `max` (didn't see that coming, did you?). Using these parameters, `minmax()` ( per MDN) "defines a size range greater than or equal to min and less than or equal to max." So it's basically just `min-width` and `max-width` coming together to form a super CSS robot. _[insert Voltron gif]_
+`minmax()` takes two parameters: a `min` and a `max` (didn't see that coming, did you?). Using these parameters, `minmax()` ( per MDN) "defines a size range greater than or equal to min and less than or equal to max." So it's basically just `min-width` and `max-width` coming together to form a super CSS robot.
 
 A few examples:
-- `grid-template-columns: 500px minmax(300px, 500px);`: The first column will be fixed at 500px. The second column will be flexible, with a minimum width of 300px and a maximum width of 500px.
+- `grid-template-columns: 700px minmax(300px, 500px);`: The first column will be fixed at 700px. The second column will be flexible, with a minimum width of 300px and a maximum width of 500px.
 
-- `grid-template-columns: 500px minmax(300px, 1fr);`: The first column will be fixed at 500px. The second column will have a flexible width, growing as much as the remaining space allows, but not shrinking below 300px.
+- `grid-template-columns: 700px minmax(300px, 1fr);`: The first column will be fixed at 700px. The second column will have a flexible width, growing as much as the remaining space allows, but not shrinking below 300px.
 
-- `grid-template-columns: 500px minmax(min-content, 500px);`: The first column will be fixed at 500px. The second column will have a minimum width of the content's _smallest_ possible size (in this case, the text will wrap). The second column will not grow larger than 500px.
+- `grid-template-columns: 700px minmax(min-content, 500px);`: The first column will be fixed at 700px. The second column will have a minimum width of the content's _smallest_ possible size (in this case, the text will wrap). The second column will not grow larger than 500px.
 
-- `grid-template-columns: 500px minmax(max-content, 500px);`: The first column will be fixed at 500px. The second column will have a minimum width of its content's _largest_ possible size (in this case, the text will _not_ wrap). The second column will not grow larger than 500px.
+- `grid-template-columns: 700px minmax(max-content, 500px);`: The first column will be fixed at 700px. The second column will have a minimum width of its content's _largest_ possible size (in this case, the text will _not_ wrap). The second column will not grow larger than 500px.
 
 But wait. There's more.
 
